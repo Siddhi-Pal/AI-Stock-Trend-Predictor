@@ -29,10 +29,12 @@ The core engineering innovation is the **"Stationary Returns Pipeline"**.
 
 ### 1. The Math (Why it works)
 Instead of predicting Price ($P_t$), we predict Daily Return ($R_t$):
-$$ R_t = \frac{P_t - P_{t-1}}{P_{t-1}} $$
 
-The model learns to predict $R_{t+1}$. The final price is reconstructed recursively:
-$$ P_{t+1} = P_t \times (1 + \text{Predicted } R_{t+1}) $$
+`R_t = (P_t - P_{t-1}) / P_{t-1}`
+
+The model learns to predict `R_{t+1}`. The final price is reconstructed recursively:
+
+`P_{t+1} = P_t * (1 + Predicted_R_{t+1})`
 
 ### 2. The Model (Enhanced LSTM)
 *   **Input:** Sliding Window of 60 days (Price, RSI, MACD, Volume).
