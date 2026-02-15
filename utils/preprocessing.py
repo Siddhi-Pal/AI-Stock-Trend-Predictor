@@ -254,6 +254,10 @@ def save_scaler(scaler, filepath='models/scaler.pkl'):
     filepath : str
         Path to save the scaler
     """
+    # Ensure directory exists
+    import os
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
     with open(filepath, 'wb') as f:
         pickle.dump(scaler, f)
     print(f"Scaler saved to {filepath}")

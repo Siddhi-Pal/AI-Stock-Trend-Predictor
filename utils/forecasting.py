@@ -199,6 +199,11 @@ def train_lstm(model, X_train, y_train, X_val, y_val,
     keras.callbacks.History
         Training history
     """
+    # Ensure model directory exists
+    import os
+    if os.path.dirname(model_path):
+        os.makedirs(os.path.dirname(model_path), exist_ok=True)
+
     # Early stopping callback
     early_stop = EarlyStopping(
         monitor='val_loss',
